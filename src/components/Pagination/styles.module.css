@@ -1,0 +1,48 @@
+.pagination {
+	display: flex;
+	width: 100%;
+	gap: 8px;
+	align-items: center;
+	justify-content: center;
+}
+
+.pageNumber,
+.arrow {
+	border: none;
+	background-color: white;
+	cursor: pointer;
+	width: 32px;
+	height: 32px;
+}
+
+.pageNumber:disabled,
+.arrow:disabled {
+	cursor: default;
+}
+
+.arrow:disabled:hover,
+.arrow:disabled:focus-visible {
+	background-color: transparent;
+	border-radius: unset;
+}
+
+.pageNumber:disabled{
+	background-color: #3980a4;
+	border-radius: 50%;
+	color:white;
+}
+
+.pageNumber:hover,
+.arrow:hover,
+.pageNumber:focus-visible,
+.arrow:focus-visible {
+	background-color: #66b7e1;
+	border-radius: 50%;
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
