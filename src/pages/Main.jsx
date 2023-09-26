@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from "./styles.module.css";
 import NewsBanner from "../components/NewsBanner/NewsBanner.jsx";
 import { getCategories, getNews } from "../api/apiNews.js";
 import NewsList from "../components/NewsList/NewsList.jsx";
@@ -8,6 +7,7 @@ import Pagination from "../components/Pagination/Pagination.jsx";
 import Categories from "../components/Categories/Categories.jsx";
 import Search from "../components/Search/Search.jsx";
 import { useDebounce } from "../helpers/hooks/useDebounce.js";
+import styles from "./styles.module.css";
 
 const Main = () => {
   const [news, setNews] = useState([]);
