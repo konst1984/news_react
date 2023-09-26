@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./NewsList.module.css";
+import styles from "./styles.module.css";
 import NewsItem from "../NewsItem/NewsItem.jsx";
 
 const NewsList = ({ news }) => {
