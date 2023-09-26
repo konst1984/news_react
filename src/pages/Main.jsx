@@ -47,7 +47,7 @@ const Main = () => {
 
   useEffect(() => {
     fetchNews(currentPage);
-  }, [currentPage, fetchNews, selectedCategory]);
+  }, [currentPage, selectedCategory]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
