@@ -3,7 +3,9 @@ import styles from "./styles.module.css";
 const Skeleton = ({ count = 1, type = "banner", direction = "column" }) => {
   if (count <= 1) {
     return (
-      <li className={type === "banner" ? styles.banner : styles.item}></li>
+      <>
+        <li className={type === "banner" ? styles.banner : styles.item}></li>
+      </>
     );
   }
 
