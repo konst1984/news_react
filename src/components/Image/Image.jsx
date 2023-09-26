@@ -1,4 +1,4 @@
-import styles from "./Image.module.css";
+import styles from "./styles.module.css";
 
 const Image = ({ image }) => {
   return (
