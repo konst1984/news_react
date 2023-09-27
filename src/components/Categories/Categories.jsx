@@ -1,10 +1,16 @@
 import styles from "./styles.module.css";
 
 const Categories = ({ categories, setSelectedCategory, selectedCategory }) => {
+  const handleCLick = (category) => setSelectedCategory("category", category);
+
+  if (!categories) {
+    return null;
+  }
+
   return (
     <div className={styles.categories}>
       <button
-        onClick={() => setSelectedCategory(null)}
+        onClick={() => handleCLick(null)}
         className={!selectedCategory ? styles.active : styles.item}
       >
         All
@@ -12,7 +18,7 @@ const Categories = ({ categories, setSelectedCategory, selectedCategory }) => {
       {categories?.map((category) => {
         return (
           <button
-            onClick={() => setSelectedCategory(category)}
+            onClick={() => handleCLick(category)}
             className={
               selectedCategory === category ? styles.active : styles.item
             }

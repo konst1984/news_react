@@ -23,9 +23,8 @@
 .arrow:disabled:hover,
 .arrow:disabled:focus-visible {
 	background-color: transparent;
-	border-radius: unset;
+	border: none;
 }
-
 .pageNumber:disabled{
 	background-color: #3980a4;
 	border-radius: 50%;
@@ -38,11 +37,13 @@
 .arrow:focus-visible {
 	background-color: #66b7e1;
 	border-radius: 50%;
+	outline: none;
 }
 
 .list {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap:2px;
 }
 
