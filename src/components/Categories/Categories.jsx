@@ -1,8 +1,9 @@
 import styles from "./styles.module.css";
 
 const Categories = ({ categories, setSelectedCategory, selectedCategory }) => {
-  const handleCLick = (category) => setSelectedCategory("category", category);
-
+  const handleCLick = (category) => {
+    setSelectedCategory("category", category);
+  };
   if (!categories) {
     return null;
   }

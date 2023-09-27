@@ -4,19 +4,16 @@ import { getCategories } from "../../api/apiNews.js";
 import Categories from "../Categories/Categories.jsx";
 import Search from "../Search/Search.jsx";
 
-const NewsFilters = ({ filters, changeFilter }) => {
+const NewsFilters = ({ filters, changeFilters }) => {
   const { data } = useFetch(getCategories);
   return (
     <div className={styles.filters}>
       <Categories
         categories={data?.categories}
         selectedCategory={filters.category}
-        setSelectedCategory={(category) => changeFilter("category", category)}
+        setSelectedCategory={changeFilters}
       />
-      <Search
-        keywords={filters.keywords}
-        setKeywords={(keywords) => changeFilter("keywords", keywords)}
-      />
+      <Search keywords={filters.keywords} setKeywords={changeFilters} />
     </div>
   );
 };
