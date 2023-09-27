@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import NewsItem from "../NewsItem/NewsItem.jsx";
+import withSkeleton from "../../helpers/hocs/withSkeleton.jsx";
 
 const NewsList = ({ news }) => {
   return (
@@ -12,4 +13,6 @@ const NewsList = ({ news }) => {
   );
 };
 
-export default NewsList;
+const NewListWithSkeleton = withSkeleton(NewsList, "item", 10);
+
+export default NewListWithSkeleton;
