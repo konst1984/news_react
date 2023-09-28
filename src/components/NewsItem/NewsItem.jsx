@@ -7,7 +7,7 @@ const NewsItem = ({ item }) => {
   return (
     <li className={styles.item}>
       <div className={styles.wrapper}>
-        <Image image={item.image} />
+        <Image image={item.image} classname={"wrapper_full"} />
       </div>
       <div className={styles.info}>
         <h3 className={styles.title}>{formatStr(item.title)}</h3>
