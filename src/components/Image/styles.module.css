@@ -6,6 +6,10 @@
 	background-color: #f2f4f5;
 }
 
+.wrapper_full{
+	height: 100%;
+}
+
 .image {
 	position: absolute;
 	top: 0;
