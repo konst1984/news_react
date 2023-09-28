@@ -17,6 +17,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react/prop-types": "off",//Отключить проверку типов props
-    "no-unused-vars": 'warn'
+    "no-unused-vars": "warn",
   },
 }
