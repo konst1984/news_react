@@ -5,12 +5,15 @@ import { formatStr } from "../../helpers/formatTitle.js";
 import { formatAuthors } from "../../helpers/formatAuthors.js";
 
 const NewsBanner = ({ item }) => {
-  const authors = () => {
+  const getAuthors = () => {
     const indexTarget = item.author.search("href");
     if (indexTarget > -1) {
       return formatAuthors(item.author);
     }
+    return false;
   };
+
+  const authors = getAuthors();
 
   return (
     <div className={styles.banner}>
@@ -18,7 +21,7 @@ const NewsBanner = ({ item }) => {
       <h3 className={styles.title}>{formatStr(item?.title)}</h3>
       <p className={styles.extra}>
         {formatTimeAgo(item.published)} by{" "}
-        {authors.length <= 0 ? (
+        {!authors ? (
           item.author
         ) : (
           <ul className={styles.authorsList}>
