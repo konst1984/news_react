@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import {ThemeProvider} from "./context/theme/ThemeContext";
+import { ThemeProvider } from "./context/ThemeContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ThemeProvider>
-    <React.StrictMode>
+  <React.StrictMode>
+    <ThemeProvider>
       <App />
-    </React.StrictMode>
-  </ThemeProvider>
+    </ThemeProvider>
+  </React.StrictMode>
 );

@@ -5,13 +5,13 @@ interface IThemeContext {
   toggleTheme: () => void;
 }
 
-export const ThemeContext = createContext<IThemeContext | undefined | Error>(undefined);
+export const ThemeContext = createContext<IThemeContext | undefined>(undefined);
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
 
   if (!context) {
-    return new Error('Can not "useThemeContext" outside of the "ThemeProvider"')
+    throw new Error("context error");
   }
 
   return context;

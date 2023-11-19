@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { IFilters } from '../../interfaces';
+import { useState } from "react";
+import { IFilters } from "../../interfaces";
 
-const useFilters = (initialFilters: IFilters) => {
-	const [filters, setFilters] = useState<IFilters>(initialFilters);
+export const useFilters = (initialFilters: IFilters) => {
+  const [filters, setFilters] = useState<IFilters>(initialFilters);
 
-	const changeFilters = (key: string, value: string | number | null): void => {
-		setFilters((prev) => ({ ...prev, [key]: value }));
-	};
+  const changeFilter = (key: string, value: string | null | number) => {
+    setFilters((prev) => {
+      return { ...prev, [key]: value };
+    });
+  };
 
-	return { filters, changeFilters };
+  return { filters, changeFilter };
 };
-
-export default useFilters;

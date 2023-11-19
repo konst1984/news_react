@@ -1,77 +1,41 @@
 .pagination {
-	display: flex;
-	width: 100%;
-	gap: 8px;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 .pageNumber,
 .arrow {
-	border: none;
-	background-color: white;
-	cursor: pointer;
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 
 .pageNumber:disabled,
 .arrow:disabled {
-	cursor: default;
+  cursor: default;
 }
 
-.arrow:disabled:hover,
-.arrow:disabled:focus-visible {
-	background-color: transparent;
-	border: none;
-}
-
-.pagination.dark .pageNumber:not(:disabled),
+.pagination.dark .pageNumber,
 .pagination.dark .arrow {
-	background-color: #23272f;
-	border-radius: 5px;
-	color: #f6f7f9;
+  background-color: #23272f;
+  color: #f6f7f9;
 }
 
-.pagination.light .pageNumber:not(:disabled),
+.pagination.light .pageNumber,
 .pagination.light .arrow {
-	background-color: white;
-	border-radius: 5px;
-	color: black;
+  background-color: white;
+  color: black;
 }
 
-.pageNumber,
-.arrow{
-	padding: 8px;
-}
-
-
-.pageNumber:disabled{
-	background-color: #4e71e1;
-	border-radius: 5px;
-	color:white;
-}
-
-.pagination.dark .pageNumber:hover:not(:disabled),
-.pagination.dark .arrow:hover,
-.pagination.dark .pageNumber:focus-visible:not(:disabled),
-.pagination.dark .arrow:focus-visible {
-	background-color: white;
-	outline: none;
-	color: #1a1a1a;
-}
-
-.pagination.light .pageNumber:hover:not(:disabled),
-.pagination.light .arrow:hover,
-.pagination.light .pageNumber:focus-visible:not(:disabled),
-.pagination.light .arrow:focus-visible {
-	background-color: #1a1a1a;
-	outline: none;
-	color: white;
+.pageNumber {
+  padding: 8px;
 }
 
 .list {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap:2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-

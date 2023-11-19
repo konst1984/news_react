@@ -1,7 +1,7 @@
-import styles from "./styles.module.css";
+import { themeIcons } from "../../assets";
 import { formatDate } from "../../helpers/formatDate";
-import {themeIcons} from "../../assets";
-import {useTheme} from "../../context/theme/ThemeContext";
+import styles from "./styles.module.css";
+import { useTheme } from "../../context/ThemeContext";
 
 const Header = () => {
   const { isDark, toggleTheme } = useTheme();

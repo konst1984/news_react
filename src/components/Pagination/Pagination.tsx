@@ -1,42 +1,50 @@
-import { FC } from 'react';
-import styles from './styles.module.css';
-import { IPaginationProps } from '../../interfaces';
-import {useTheme} from "../../context/theme/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
+import { IPaginationProps } from "../../interfaces";
+import styles from "./styles.module.css";
 
-const Pagination: FC<IPaginationProps> = ({
-	totalPages,
-	currentPage,
-	handlePageClick,
-	handleNextPage,
-	handlePrevPage,
-}) => {
-	const { isDark } = useTheme();
-	return (
-		<div className={`${styles.pagination} ${isDark ? styles.dark : styles.light}`}>
-			<button className={styles.arrow} onClick={handlePrevPage} disabled={currentPage <= 1}>
-				{'<'}
-			</button>
-			<ul className={styles.list}>
-				{[...Array(totalPages)].map((_, index) => {
-					return (
-						<button
-							key={index}
-							className={styles.pageNumber}
-							disabled={index + 1 === currentPage}
-							onClick={() => handlePageClick(index + 1)}>
-							{index + 1}
-						</button>
-					);
-				})}
-			</ul>
-			<button
-				className={styles.arrow}
-				onClick={handleNextPage}
-				disabled={currentPage >= totalPages}>
-				{'>'}
-			</button>
-		</div>
-	);
+const Pagination = ({
+  totalPages,
+  handlePreviousPage,
+  handleNextPage,
+  handlePageClick,
+  currentPage,
+}: IPaginationProps) => {
+  const { isDark } = useTheme();
+  return (
+    <div
+      className={`${styles.pagination} ${isDark ? styles.dark : styles.light}`}
+    >
+      <button
+        disabled={currentPage <= 1}
+        onClick={handlePreviousPage}
+        className={styles.arrow}
+      >
+        {"<"}
+      </button>
+      <div className={styles.list}>
+        {[...Array(totalPages)].map((_, index) => {
+          return (
+            <button
+              onClick={() => handlePageClick(index + 1)}
+              className={styles.pageNumber}
+              disabled={index + 1 === currentPage}
+              key={index}
+            >
+              {index + 1}
+            </button>
+          );
+        })}
+      </div>
+
+      <button
+        disabled={currentPage >= totalPages}
+        onClick={handleNextPage}
+        className={styles.arrow}
+      >
+        {">"}
+      </button>
+    </div>
+  );
 };
 
 export default Pagination;
