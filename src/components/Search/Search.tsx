@@ -1,27 +1,24 @@
-import { FC } from 'react';
-import styles from './styles.module.css';
+import { useTheme } from "../../context/ThemeContext";
+import styles from "./styles.module.css";
 
-interface IProps {
-	keywords: string;
-	setKeywords: (key: string, keywords: string) => void;
+interface Props {
+  keywords: string;
+  setKeywords: (keywords: string) => void;
 }
 
-const Search: FC<IProps> = ({ keywords, setKeywords }) => {
-	const handleChange = (keywords: string) => setKeywords('keywords', keywords);
-
-	return (
-		<form>
-			<label>
-				<input
-					type="text"
-					value={keywords}
-					onChange={(e) => handleChange(e.target.value)}
-					className={styles.input}
-					placeholder="Search..."
-				/>
-			</label>
-		</form>
-	);
+const Search = ({ keywords, setKeywords }: Props) => {
+  const { isDark } = useTheme();
+  return (
+    <div className={`${styles.search} ${isDark ? styles.dark : styles.light}`}>
+      <input
+        type="text"
+        value={keywords}
+        onChange={(e) => setKeywords(e.target.value)}
+        className={styles.input}
+        placeholder="Javascript"
+      />
+    </div>
+  );
 };
 
 export default Search;

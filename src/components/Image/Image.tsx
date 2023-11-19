@@ -1,28 +1,15 @@
-import styles from './styles.module.css';
-import { FC, useRef } from 'react';
-import NotPicture from '../../assets/notPicture.webp';
+import styles from "./styles.module.css";
 
-interface IProps {
-	image: string | undefined;
-	classname?: string;
+interface Props {
+  image: string;
 }
 
-const Image: FC<IProps> = ({ image, classname = '' }) => {
-	const ref = useRef<HTMLImageElement | null>(null);
-
-	const handleError = () => {
-		if (ref.current) {
-			ref.current.src = NotPicture;
-		}
-	};
-
-	return (
-		<div className={`${styles.wrapper} ${styles[classname]}`}>
-			{image ? (
-				<img src={image} alt="news" className={styles.image} ref={ref} onError={handleError} />
-			) : null}
-		</div>
-	);
+const Image = ({ image }: Props) => {
+  return (
+    <div className={styles.wrapper}>
+      {image ? <img src={image} alt="news" className={styles.image} /> : null}
+    </div>
+  );
 };
 
 export default Image;

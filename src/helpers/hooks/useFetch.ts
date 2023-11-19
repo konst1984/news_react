@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
-type IFetchFunction<P, T> = {
-  (params? : P) : Promise<T>
+interface FetchFunction<P, T> {
+  (params?: P): Promise<T>;
 }
 
-type IUseFetchResult<T>  = {
+interface UseFetchResult<T> {
   data: T | null | undefined;
   isLoading: boolean;
-  error: Error | null
+  error: Error | null;
 }
 
-const useFetch =<T, P> (fetchFunction: IFetchFunction<P, T>, params?:P): IUseFetchResult<T> => {
+export const useFetch = <T, P>(
+  fetchFunction: FetchFunction<P, T>,
+  params?: P
+): UseFetchResult<T> => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -22,9 +25,10 @@ const useFetch =<T, P> (fetchFunction: IFetchFunction<P, T>, params?:P): IUseFet
       try {
         setIsLoading(true);
         const result = await fetchFunction(params);
+
         setData(result);
-      } catch (err) {
-        setError(err as Error);
+      } catch (error) {
+        setError(error as Error);
       } finally {
         setIsLoading(false);
       }
@@ -33,5 +37,3 @@ const useFetch =<T, P> (fetchFunction: IFetchFunction<P, T>, params?:P): IUseFet
 
   return { data, isLoading, error };
 };
-
-export default useFetch;
