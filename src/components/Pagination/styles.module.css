@@ -1,50 +1,41 @@
 .pagination {
-	display: flex;
-	width: 100%;
-	gap: 8px;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 .pageNumber,
 .arrow {
-	border: none;
-	background-color: white;
-	cursor: pointer;
-	width: 32px;
-	height: 32px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
 }
 
 .pageNumber:disabled,
 .arrow:disabled {
-	cursor: default;
+  cursor: default;
 }
 
-.arrow:disabled:hover,
-.arrow:disabled:focus-visible {
-	background-color: transparent;
-	border: none;
-}
-.pageNumber:disabled{
-	background-color: #4e71e1;
-	border-radius: 50%;
-	color:white;
+.pagination.dark .pageNumber,
+.pagination.dark .arrow {
+  background-color: #23272f;
+  color: #f6f7f9;
 }
 
-.pageNumber:hover,
-.arrow:hover,
-.pageNumber:focus-visible,
-.arrow:focus-visible {
-	background-color: #1a1a1a;
-	border-radius: 50%;
-	outline: none;
-	color: #ffffff;
+.pagination.light .pageNumber,
+.pagination.light .arrow {
+  background-color: white;
+  color: black;
+}
+
+.pageNumber {
+  padding: 8px;
 }
 
 .list {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap:2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-

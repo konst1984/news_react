@@ -1,17 +1,17 @@
-import BannersList from '../BannersList/BannersList.js';
-import styles from './styles.module.css';
-import useFetch from '../../helpers/hooks/useFetch';
-import { getLatestNews } from '../../api/apiNews.ts';
-import { INewsApiResponse } from '../../interfaces';
+import { getLatestNews } from "../../api/apiNews";
+import { useFetch } from "../../helpers/hooks/useFetch";
+import { NewsApiResponse } from "../../interfaces";
+import BannersList from "../BannersList/BannersList";
+import styles from "./styles.module.css";
 
 const LatestNews = () => {
-	const { data, isLoading } = useFetch<INewsApiResponse, null>(getLatestNews);
+  const { data, isLoading } = useFetch<NewsApiResponse, null>(getLatestNews);
 
-	return (
-		<section className={styles.section}>
-			<BannersList banners={data && data.news} isLoading={isLoading} />
-		</section>
-	);
+  return (
+    <section className={styles.section}>
+      <BannersList banners={data && data.news} isLoading={isLoading} />
+    </section>
+  );
 };
 
 export default LatestNews;
