@@ -1,44 +1,42 @@
-import { ForwardedRef, forwardRef } from "react";
-import styles from "./styles.module.css";
-import { CategoriesType } from "../../interfaces";
+import { FC, ForwardedRef } from 'react';
+import styles from './styles.module.css';
+import { forwardRef } from 'react';
+import { CategoryType } from '../../interfaces';
 
-interface Props {
-  categories: CategoriesType[];
-  setSelectedCategory: (category: CategoriesType | null) => void;
-  selectedCategory: CategoriesType | null;
+interface IProps {
+	categories: CategoryType[];
+	setSelectedCategory: (key: string, category: CategoryType | null) => void;
+	selectedCategory: CategoryType | null;
 }
 
-const Categories = forwardRef(
-  (
-    { categories, setSelectedCategory, selectedCategory }: Props,
-    ref: ForwardedRef<HTMLDivElement>
-  ) => {
-    return (
-      <div ref={ref} className={styles.categories}>
-        <button
-          onClick={() => setSelectedCategory(null)}
-          className={!selectedCategory ? styles.active : styles.item}
-        >
-          All
-        </button>
-        {categories.map((category) => {
-          return (
-            <button
-              onClick={() => setSelectedCategory(category)}
-              className={
-                selectedCategory === category ? styles.active : styles.item
-              }
-              key={category}
-            >
-              {category}
-            </button>
-          );
-        })}
-      </div>
-    );
-  }
+const Categories: FC<IProps> = forwardRef(
+	({ categories, setSelectedCategory, selectedCategory }, ref: ForwardedRef<HTMLDivElement>) => {
+		const handleCLick = (category: CategoryType | null) => {
+			setSelectedCategory('category', category);
+		};
+
+		return (
+			<div ref={ref} className={styles.categories}>
+				<button
+					onClick={() => handleCLick(null)}
+					className={!selectedCategory ? styles.active : styles.item}>
+					All
+				</button>
+				{categories?.map((category) => {
+					return (
+						<button
+							onClick={() => handleCLick(category)}
+							className={selectedCategory === category ? styles.active : styles.item}
+							key={category}>
+							{category}
+						</button>
+					);
+				})}
+			</div>
+		);
+	},
 );
 
-Categories.displayName = "Categories";
+Categories.displayName = 'Categories';
 
 export default Categories;
