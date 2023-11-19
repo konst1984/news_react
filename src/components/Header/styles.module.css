@@ -1,32 +1,38 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 12px 24px;
-  background-color: white;
-  border-bottom: 1px solid #f2f4f5;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 12px 24px;
+	background-color: white;
+	border-bottom: 1px solid #f2f4f5;
 }
 
 .info {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .dark {
-  background-color: #23272f;
-  border-bottom: 1px solid rgb(60, 60, 60);
+	background-color: #23272f;
+	border-bottom: 1px solid rgb(60, 60, 60);
 }
 
 .light {
-  background-color: white;
-}
-
-.title {
-  font-size: 28px;
+	background-color: white;
 }
 
 .date {
-  font-size: 16px;
+	font-size: 16px;
+}
+
+.header.dark .title,
+.header.light .title{
+	font-size: 28px;
+	color: red;
+}
+
+.date {
+	font-size: 16px;
 }
