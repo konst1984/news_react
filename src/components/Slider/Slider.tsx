@@ -5,9 +5,10 @@ import { useRef } from 'react';
 interface IProps {
 	children: React.ReactElement;
 	step?: number;
+	isDark: boolean;
 }
 
-const Slider: FC<IProps> = ({ children, step = 150 }) => {
+const Slider: FC<IProps> = ({ children, step = 150,isDark }) => {
 	const sliderRef = useRef<HTMLElement | null>(null);
 
 	const scrollLeft = () => {
@@ -21,7 +22,7 @@ const Slider: FC<IProps> = ({ children, step = 150 }) => {
 	};
 
 	return (
-		<div className={styles.slider}>
+		<div className={`${styles.slider} ${isDark ? styles.dark : styles.light}`}>
 			<button className={styles.arrow} onClick={scrollLeft}>
 				{'<'}
 			</button>

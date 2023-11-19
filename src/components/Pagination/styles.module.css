@@ -11,8 +11,6 @@
 	border: none;
 	background-color: white;
 	cursor: pointer;
-	width: 32px;
-	height: 32px;
 }
 
 .pageNumber:disabled,
@@ -25,20 +23,49 @@
 	background-color: transparent;
 	border: none;
 }
+
+.pagination.dark .pageNumber:not(:disabled),
+.pagination.dark .arrow {
+	background-color: #23272f;
+	border-radius: 5px;
+	color: #f6f7f9;
+}
+
+.pagination.light .pageNumber:not(:disabled),
+.pagination.light .arrow {
+	background-color: white;
+	border-radius: 5px;
+	color: black;
+}
+
+.pageNumber,
+.arrow{
+	padding: 8px;
+}
+
+
 .pageNumber:disabled{
 	background-color: #4e71e1;
-	border-radius: 50%;
+	border-radius: 5px;
 	color:white;
 }
 
-.pageNumber:hover,
-.arrow:hover,
-.pageNumber:focus-visible,
-.arrow:focus-visible {
-	background-color: #1a1a1a;
-	border-radius: 50%;
+.pagination.dark .pageNumber:hover:not(:disabled),
+.pagination.dark .arrow:hover,
+.pagination.dark .pageNumber:focus-visible:not(:disabled),
+.pagination.dark .arrow:focus-visible {
+	background-color: white;
 	outline: none;
-	color: #ffffff;
+	color: #1a1a1a;
+}
+
+.pagination.light .pageNumber:hover:not(:disabled),
+.pagination.light .arrow:hover,
+.pagination.light .pageNumber:focus-visible:not(:disabled),
+.pagination.light .arrow:focus-visible {
+	background-color: #1a1a1a;
+	outline: none;
+	color: white;
 }
 
 .list {

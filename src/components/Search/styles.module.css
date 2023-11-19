@@ -1,5 +1,4 @@
 .search {
-	display: flex;
 	width: 100%;
 	background-color: white;
 	gap: 12px;
@@ -18,4 +17,12 @@
 .input:focus{
 	outline: 2px solid #6b4eff;
 	background-color: #ffffff;
+}
+
+.light {
+	background-color: white;
+}
+
+.dark {
+	background-color: #23272f;
 }

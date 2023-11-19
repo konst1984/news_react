@@ -6,6 +6,7 @@ import Search from '../Search/Search.tsx';
 import Slider from '../Slider/Slider.tsx';
 import { FC } from 'react';
 import { ICategoriesApiResponse, IFilters } from '../../interfaces';
+import {useTheme} from "../../context/theme/ThemeContext";
 
 interface INewFilters {
 	filters: IFilters;
@@ -13,11 +14,12 @@ interface INewFilters {
 }
 
 const NewsFilters: FC<INewFilters> = ({ filters, changeFilters }) => {
+	const { isDark } = useTheme();
 	const { data } = useFetch<ICategoriesApiResponse, null>(getCategories);
 	return (
 		<div className={styles.filters}>
 			{data ? (
-				<Slider>
+				<Slider isDark={isDark}>
 					<Categories
 						categories={data?.categories}
 						selectedCategory={filters.category}
