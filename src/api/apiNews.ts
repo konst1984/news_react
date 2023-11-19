@@ -9,7 +9,7 @@ enum STATUS {
 	OK = 'ok',
 }
 
-export const getNews = async (params?: ParamsType): Promise<T> => {
+export const getNews = async (params?: ParamsType): Promise<INewsApiResponse> => {
 	try {
 		const { page_number = 1, page_size = 10, category, keywords } = params || {};
 		const response = await axios.get<INewsApiResponse>(`${BASE_URL}search`, {
