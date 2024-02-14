@@ -4,12 +4,11 @@ import {useTheme} from "../../context/ThemeContext";
 
 interface IProps {
 	keywords: string;
-	setKeywords: (key: string, keywords: string) => void;
+	setKeywords: (keywords: string) => void;
 }
 
 const Search: FC<IProps> = ({ keywords, setKeywords }) => {
 	const { isDark } = useTheme();
-	const handleChange = (keywords: string) => setKeywords('keywords', keywords);
 
 	return (
 		<form>
@@ -17,7 +16,7 @@ const Search: FC<IProps> = ({ keywords, setKeywords }) => {
 				<input
 					type="text"
 					value={keywords}
-					onChange={(e) => handleChange(e.target.value)}
+					onChange={(e) => setKeywords(e.target.value)}
 					className={`${styles.input} ${isDark ? styles.dark : styles.light}`}
 					placeholder="Search..."
 				/>

@@ -1,53 +1,48 @@
 import styles from "./styles.module.css";
-import { PAGE_SIZE, TOTAL_PAGE } from "../../constants";
+import { TOTAL_PAGE } from "../../constants";
 import NewsList from "../NewsList/NewsList.tsx";
 import NewsFilters from "../NewsFilters/NewsFilters.tsx";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
-import useFetch from "../../helpers/hooks/useFetch";
-import { getNews } from "../../api/apiNews.ts";
-import useFilters from "../../helpers/hooks/useFilters";
 import PaginationWrapper from "../PaginationWrapper/PaginationWrapper.tsx";
-import {INewsApiResponse, ParamsType} from "../../interfaces";
+import { useGetNewsQuery } from "../../store/services/newsApi.ts";
+import { useAppDispatch, useAppSelector } from "../../store/index.ts";
+import { setFilters } from "../../store/slices/newsSlice.ts";
 
 const NewsByFilters = () => {
-  const { filters, changeFilters } = useFilters({
-    page_number: 1,
-    page_size: PAGE_SIZE,
-    category: "all",
-    keywords: "",
-  });
+  const dispatch = useAppDispatch()
+
+  const filters = useAppSelector(state => state.news.filters);
 
   const debouncedKeywords = useDebounce(filters.keywords, 500);
 
-  const { data, isLoading } = useFetch<INewsApiResponse,ParamsType>(getNews, {
+  const { data, isLoading } = useGetNewsQuery({
     ...filters,
     keywords: debouncedKeywords,
-  });
+  })
 
   const handleNextPage = () => {
     if (filters.page_number < TOTAL_PAGE) {
-      changeFilters("page_number", filters.page_number + 1);
+     dispatch(setFilters({key:"page_number", value: filters.page_number + 1}));
     }
   };
 
   const handlePrevPage = () => {
     if (filters.page_number > 1) {
-      changeFilters("page_number", filters.page_number - 1);
+      dispatch(setFilters({key: "page_number", value: filters.page_number - 1}));
     }
   };
 
   const handlePageClick = (pageNumber: number) => {
     if (filters.page_number <= TOTAL_PAGE) {
-      changeFilters("page_number", pageNumber);
+      dispatch(setFilters({key: "page_number", value: pageNumber}));
     }
   };
 
   return (
     <section className={styles.section}>
-      <NewsFilters filters={filters} changeFilters={changeFilters} />
+      <NewsFilters filters={filters} />
 
       <PaginationWrapper
-        top={true}
         bottom={true}
         totalPages={TOTAL_PAGE}
         currentPage={filters.page_number}
