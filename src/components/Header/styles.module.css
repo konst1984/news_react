@@ -36,3 +36,9 @@
 .date {
 	font-size: 16px;
 }
+
+.theme_btn{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
