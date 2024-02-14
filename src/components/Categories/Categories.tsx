@@ -5,27 +5,24 @@ import { CategoryType } from '../../interfaces';
 
 interface IProps {
 	categories: CategoryType[];
-	setSelectedCategory: (key: string, category: CategoryType | null) => void;
+	setSelectedCategory: (category: CategoryType | null) => void;
 	selectedCategory: CategoryType | null;
 }
 
 const Categories: FC<IProps> = forwardRef(
 	({ categories, setSelectedCategory, selectedCategory }, ref: ForwardedRef<HTMLDivElement>) => {
-		const handleCLick = (category: CategoryType | null) => {
-			setSelectedCategory('category', category);
-		};
 
 		return (
 			<div ref={ref} className={styles.categories}>
 				<button
-					onClick={() => handleCLick(null)}
+					onClick={() => setSelectedCategory(null)}
 					className={!selectedCategory ? styles.active : styles.item}>
 					All
 				</button>
 				{categories?.map((category) => {
 					return (
 						<button
-							onClick={() => handleCLick(category)}
+							onClick={() => setSelectedCategory(category)}
 							className={selectedCategory === category ? styles.active : styles.item}
 							key={category}>
 							{category}

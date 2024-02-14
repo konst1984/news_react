@@ -14,7 +14,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    // "react/prop-types": "off",
     "no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
   },
 }

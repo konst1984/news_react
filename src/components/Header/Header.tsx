@@ -14,12 +14,14 @@ const Header = () => {
         <p className={styles.date}>{formatDate(new Date())}</p>
       </div>
 
-      <img
-        src={isDark ? themeIcons.light : themeIcons.dark}
-        width={30}
-        alt="theme"
-        onClick={toggleTheme}
-      />
+      <button className={styles.theme_btn}>
+        <img
+          src={isDark ? themeIcons.light : themeIcons.dark}
+          width={30}
+          alt="theme"
+          onClick={toggleTheme}
+        />
+      </button>
     </header>
   );
 };
