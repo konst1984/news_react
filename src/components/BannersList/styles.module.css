@@ -8,7 +8,7 @@
 
 @media (min-width: 768px) {
 	.banners {
-		max-height: 1200px;
+		max-height: 1275px;
 		overflow-y: auto;
 	}
 }
