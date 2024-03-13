@@ -1,0 +1,35 @@
+.slider {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	gap: 8px;
+}
+
+.arrow {
+	border: none;
+	flex-shrink: 0;
+	background-color: white;
+	width: 30px;
+	height: 30px;
+	font-weight: 700;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.slider.dark .arrow {
+	background-color: #23272f;
+	color: #f6f7f9;
+}
+
+.slider.dark .arrow:hover,
+.slider.light .arrow:hover,
+.slider.dark .arrow:focus-visible,
+.slider.light .arrow:focus-visible{
+	background-color: gray;
+	color: #f6f7f9;
+}
+
+.slider.light .arrow {
+	background-color: white;
+	color: black;
+}
