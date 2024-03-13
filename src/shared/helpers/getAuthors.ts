@@ -1,4 +1,4 @@
-import { INews } from '../interfaces';
+import { INews } from '@/entities/news';
 import { formatAuthors } from './formatAuthors';
 
 export const getAuthors = (item: INews): string[] => {
