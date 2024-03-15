@@ -1,5 +1,4 @@
-import { NewsItem } from '@/entities/category';
-import { INews } from '@/entities/news';
+import { INews, NewsCard } from '@/entities/news';
 import withSkeleton from '@/shared/hocs/withSkeleton';
 import { FC } from 'react';
 import styles from './styles.module.css';
@@ -7,18 +6,20 @@ import styles from './styles.module.css';
 
 interface IProps {
 	news?: INews[];
+	type?: "banner" | "item";
+	direction?: "row" | "column";
 }
 
-const NewsList: FC<IProps> = ({ news }) => {
+const NewsList: FC<IProps> = ({ news, type = "item" }) => {
 	return (
-		<ul className={styles.list}>
+		<ul className={`${type === "item" ? styles.items : styles.banners}`}>
 			{news?.map((item) => {
-				return <NewsItem key={item.id} item={item} />;
+				return <NewsCard key={item.id} item={item} type={type}/>;
 			})}
 		</ul>
 	);
 };
 
-const NewListWithSkeleton = withSkeleton<IProps>(NewsList, 'item', 10);
+const NewListWithSkeleton = withSkeleton<IProps>(NewsList, 10,);
 
 export default NewListWithSkeleton;
