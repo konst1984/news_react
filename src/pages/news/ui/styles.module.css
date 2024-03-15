@@ -1,0 +1,12 @@
+.news {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 22px;
+}
+
+/* @media (max-width: 768px) {
+	.news {
+		grid-template-columns: 1fr;
+	}
+} */
